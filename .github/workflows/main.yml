@@ -1,7 +1,7 @@
 name: Build SpeedShare APK
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
@@ -25,6 +25,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Setup Flutter Engine
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Pre-configure Flet Android
+        run: |
+          flet build apk --version
 
       - name: Build Android APK
         run: |
