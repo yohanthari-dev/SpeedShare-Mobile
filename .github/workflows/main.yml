@@ -31,10 +31,6 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Pre-configure Flet Android
-        run: |
-          flet build apk --version
-
       - name: Build Android APK
         run: |
           flet build apk --project SpeedSharePro
